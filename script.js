@@ -14,3 +14,6 @@ const winningConditions = [
     [0, 4, 8], // Set the winning conditions for the top left to bottom right diagonal
     [2, 4, 6], // Set the winning conditions for the top right to bottom left diagonal
 ];
+
+document.getElementById('scoreboard-x').innerText = scoreX; // Displays the score for X
+document.getElementById('scoreboard-o').innerText = scoreO; // Displays the score for O
