@@ -52,18 +52,18 @@ function checkResult() { // Added function that Checks the results
         }
     }
 
-    if (roundWon) { // 
-        gameActive = false; // 
-        document.getElementById('turn').innerText = `${currentPlayer} Wins!`; //
-        if (currentPlayer === 'X') { //
-            scoreX++; //
-            localStorage.setItem('scoreX', scoreX); //
-        } else { //
-            scoreO++; //
-            localStorage.setItem('scoreO', scoreO); //
+    if (roundWon) { // If a player has met one of the winning conditions
+        gameActive = false; // It will set the game as inactive
+        document.getElementById('turn').innerText = `${currentPlayer} Wins!`; // Displays the winner
+        if (currentPlayer === 'X') { // Checks if X is the current player
+            scoreX++; // It will implement player X's score
+            localStorage.setItem('scoreX', scoreX); // Player X's score is saved to the local Storage
+        } else { // If the current player is not X the current player is O
+            scoreO++; // It will implement player O's score
+            localStorage.setItem('scoreO', scoreO); // Player O's score is saved to the local Storage
         }
-        updateScoreboard(); //
-        return; //
+        updateScoreboard(); // Updates the scoreboard for the players
+        return; // Exits the function
     }
 
     let roundDraw = !gameState.includes('');
