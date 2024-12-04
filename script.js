@@ -74,7 +74,7 @@ function checkResult() { // Added function that Checks the results
     }
 }
 
-function updateScoreboard() {
-    document.getElementById('scoreboard-x').innerText = scoreX;
-    document.getElementById('scoreboard-o').innerText = scoreO;
+function updateScoreboard() { // Function that updates the scoreboard
+    document.getElementById('scoreboard-x').innerText = scoreX; // Player X's score is updated
+    document.getElementById('scoreboard-o').innerText = scoreO; // Player O's score is updated
 }
