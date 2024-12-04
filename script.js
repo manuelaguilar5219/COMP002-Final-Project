@@ -66,11 +66,11 @@ function checkResult() { // Added function that Checks the results
         return; // Exits the function
     }
 
-    let roundDraw = !gameState.includes('');
-    if (roundDraw) {
-        gameActive = false;
-        document.getElementById('turn').innerText = 'Tie!';
-        return;
+    let roundDraw = !gameState.includes(''); // Checks if the game ended in a draw
+    if (roundDraw) { // If the game has ended in a draw
+        gameActive = false; // It will set the game as inactive
+        document.getElementById('turn').innerText = 'Tie!'; // It will display a message that the game has ended in a tie
+        return; // Exits the function
     }
 }
 
@@ -80,14 +80,14 @@ function updateScoreboard() { // Function that updates the scoreboard
 }
 
 function handleRestartGame() { // Function that restarts he game
-    currentPlayer = 'X';
-    gameActive = true;
-    gameState = ['', '', '', '', '', '', '', '', ''];
-    document.getElementById('turn').innerText = currentPlayer;
-    document.querySelectorAll('.game-square').forEach(cell => cell.innerText = '');
+    currentPlayer = 'X'; // It will reset the initial player as X
+    gameActive = true; // Sets the game as active
+    gameState = ['', '', '', '', '', '', '', '', '']; // Clear the game state
+    document.getElementById('turn').innerText = currentPlayer; // It updated the display that shows who's turn it is
+    document.querySelectorAll('.game-square').forEach(cell => cell.innerText = ''); // All the squares in the game will clear
 }
 
-document.querySelectorAll('.game-square').forEach(cell => cell.addEventListener('click', handleCellClick));
-document.getElementById('button-play-again').addEventListener('click', handleRestartGame);
+document.querySelectorAll('.game-square').forEach(cell => cell.addEventListener('click', handleCellClick)); // A click eventListener that adds the X/O to the cell that is clicked
+document.getElementById('button-play-again').addEventListener('click', handleRestartGame); // A click eventListener that makes the game restart when the button is clicked
 
-document.getElementById('turn').innerText = currentPlayer;
+document.getElementById('turn').innerText = currentPlayer; // It will display who's turn it is 
