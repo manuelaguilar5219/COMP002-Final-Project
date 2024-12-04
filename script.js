@@ -17,3 +17,21 @@ const winningConditions = [
 
 document.getElementById('scoreboard-x').innerText = scoreX; // Displays the score for X
 document.getElementById('scoreboard-o').innerText = scoreO; // Displays the score for O
+
+function handleCellClick(event) { // Added function that handles the event of a cell being clicked
+    const clickedCell = event.target; // The event of the cell being clicked
+    const clickedCellIndex = parseInt(clickedCell.getAttribute('id').split('-')[1]); // Identifies which cell is being clicked
+
+    if (gameState[clickedCellIndex] !== '' || !gameActive) { // Checks if the cell that is being clicked has already been clicked before
+        return; // Ignores the click if the cell has already been filled
+    }
+
+    gameState[clickedCellIndex] = currentPlayer; // Updates the gameState
+    clickedCell.innerText = currentPlayer; // Displays the symbol for the current player
+
+    checkResult(); // Is used to Check to see if the game is won or tied
+    if (gameActive) { // Will only switch players if the game is still currently active
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'; // Switches from player X to O 
+        document.getElementById('turn').innerText = currentPlayer; // Displays the current turn
+    }
+}
