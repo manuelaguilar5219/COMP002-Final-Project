@@ -86,3 +86,8 @@ function handleRestartGame() { // Function that restarts he game
     document.getElementById('turn').innerText = currentPlayer;
     document.querySelectorAll('.game-square').forEach(cell => cell.innerText = '');
 }
+
+document.querySelectorAll('.game-square').forEach(cell => cell.addEventListener('click', handleCellClick));
+document.getElementById('button-play-again').addEventListener('click', handleRestartGame);
+
+document.getElementById('turn').innerText = currentPlayer;
