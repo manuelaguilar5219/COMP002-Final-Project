@@ -73,3 +73,8 @@ function checkResult() { // Added function that Checks the results
         return;
     }
 }
+
+function updateScoreboard() {
+    document.getElementById('scoreboard-x').innerText = scoreX;
+    document.getElementById('scoreboard-o').innerText = scoreO;
+}
