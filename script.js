@@ -78,3 +78,11 @@ function updateScoreboard() { // Function that updates the scoreboard
     document.getElementById('scoreboard-x').innerText = scoreX; // Player X's score is updated
     document.getElementById('scoreboard-o').innerText = scoreO; // Player O's score is updated
 }
+
+function handleRestartGame() { // Function that restarts he game
+    currentPlayer = 'X';
+    gameActive = true;
+    gameState = ['', '', '', '', '', '', '', '', ''];
+    document.getElementById('turn').innerText = currentPlayer;
+    document.querySelectorAll('.game-square').forEach(cell => cell.innerText = '');
+}
