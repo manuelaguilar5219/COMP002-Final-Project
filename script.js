@@ -35,3 +35,41 @@ function handleCellClick(event) { // Added function that handles the event of a 
         document.getElementById('turn').innerText = currentPlayer; // Displays the current turn
     }
 }
+
+function checkResult() { // Added function that Checks the results
+    let roundWon = false; // roundWon variable tracks if a round is won
+    for (let i = 0; i < winningConditions.length; i++) {
+        const winCondition = winningConditions[i];
+        let a = gameState[winCondition[0]];
+        let b = gameState[winCondition[1]];
+        let c = gameState[winCondition[2]];
+        if (a === '' || b === c) {
+            continue;
+        }
+        if (a === b && b === c) {
+            roundWon = true; // If all cells match the round is won
+            break; // Exits the loop once the round is won
+        }
+    }
+
+    if (roundWon) {
+        gameActive = false;
+        document.getElementById('turn').innerText = `${currentPlayer} Wins!`;
+        if (currentPlayer === 'X') {
+            scoreX++;
+            localStorage.setItem('scoreX', scoreX);
+        } else {
+            scoreO++;
+            localStorage.setItem('scoreO', scoreO);
+        }
+        updateScoreboard();
+        return;
+    }
+
+    let roundDraw = !gameState.includes('');
+    if (roundDraw) {
+        gameActive = false;
+        document.getElementById('turn').innerText = 'Tie!';
+        return;
+    }
+}
