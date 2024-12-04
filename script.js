@@ -38,32 +38,32 @@ function handleCellClick(event) { // Added function that handles the event of a 
 
 function checkResult() { // Added function that Checks the results
     let roundWon = false; // roundWon variable tracks if a round is won
-    for (let i = 0; i < winningConditions.length; i++) {
-        const winCondition = winningConditions[i];
-        let a = gameState[winCondition[0]];
-        let b = gameState[winCondition[1]];
-        let c = gameState[winCondition[2]];
-        if (a === '' || b === '' || c === '') {
-            continue;
+    for (let i = 0; i < winningConditions.length; i++) { // Loop of all possible win conditions
+        const winCondition = winningConditions[i]; // Retrieves the current winning conditions
+        let a = gameState[winCondition[0]]; // sets the first cell in the win condition
+        let b = gameState[winCondition[1]]; // sets the second cell in the win condition
+        let c = gameState[winCondition[2]]; // sets the third cell in the win condition
+        if (a === '' || b === '' || c === '') { // Moves on to the next condition if any cell in the winning condition is empty
+            continue; // Skip the rest of the loop if any cell in the current win condition is empty
         }
-        if (a === b && b === c) {
+        if (a === b && b === c) { // Checks if all cells match the win condition
             roundWon = true; // If all cells match the round is won
             break; // Exits the loop once the round is won
         }
     }
 
-    if (roundWon) {
-        gameActive = false;
-        document.getElementById('turn').innerText = `${currentPlayer} Wins!`;
-        if (currentPlayer === 'X') {
-            scoreX++;
-            localStorage.setItem('scoreX', scoreX);
-        } else {
-            scoreO++;
-            localStorage.setItem('scoreO', scoreO);
+    if (roundWon) { // 
+        gameActive = false; // 
+        document.getElementById('turn').innerText = `${currentPlayer} Wins!`; //
+        if (currentPlayer === 'X') { //
+            scoreX++; //
+            localStorage.setItem('scoreX', scoreX); //
+        } else { //
+            scoreO++; //
+            localStorage.setItem('scoreO', scoreO); //
         }
-        updateScoreboard();
-        return;
+        updateScoreboard(); //
+        return; //
     }
 
     let roundDraw = !gameState.includes('');
